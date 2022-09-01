@@ -18,6 +18,7 @@
 			    <tr>
 			      <th scope="col">Nom</th>
 			      <th scope="col">Prix</th>
+			      <th scope="col">Stock</th>
 			    </tr>
 			 </thead>
 			 <tbody>
@@ -25,6 +26,7 @@
 				<tr th:each="beer: ${beers}"> <!-- beers est le nom de la variable fourni dans le modèle au niveau du conrolleur -->
 			    	<td th:text="${beer.name}" />
 			    	<td th:text="${beer.price}" />
+			    	<td th:text="${beer.stock}" />
 				</tr>
 			</tbody>
 	    </table>
