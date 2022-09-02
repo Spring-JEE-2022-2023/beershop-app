@@ -16,7 +16,7 @@ import ch.hearc.beershopfull.catalog.service.CatalogService;
  *
  */
 @Service
-public class CatalogServiceIml implements CatalogService{
+public class CatalogServiceImpl implements CatalogService{
 	
 	@Autowired
 	BeerRepository beerRepository; //repository d'accès aux données
