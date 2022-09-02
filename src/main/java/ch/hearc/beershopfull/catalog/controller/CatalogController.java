@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ch.hearc.beershopfull.catalog.model.Beer;
 import ch.hearc.beershopfull.catalog.service.CatalogService;
 
-import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * Controlleur lié au catalogue de bières
