@@ -16,7 +16,7 @@ import ch.hearc.beershopfull.catalog.repository.BeerRepository;
 @Repository
 public class BeerInMemoryRepository implements BeerRepository{
 
-	private static List<Beer> beerInMemoryDb = new ArrayList<>();
+	private static List<Beer> BEER_TABLE = new ArrayList<>();
 	private Integer pk = 0;
 	
 	/**
@@ -25,7 +25,7 @@ public class BeerInMemoryRepository implements BeerRepository{
 	 */
 	public void saveBeer(Beer beer) {
 		beer.setId(pk);
-		beerInMemoryDb.add(beer);
+		BEER_TABLE.add(beer);
 		pk++;
 	}
 	
@@ -34,8 +34,8 @@ public class BeerInMemoryRepository implements BeerRepository{
 	 * @param beer
 	 */
 	public void updateBeer(Beer beer) {
-		beerInMemoryDb.remove(beer);
-		beerInMemoryDb.add(beer);
+		BEER_TABLE.remove(beer);
+		BEER_TABLE.add(beer);
 		
 	}
 	
@@ -44,7 +44,7 @@ public class BeerInMemoryRepository implements BeerRepository{
 	 * @return
 	 */
 	public List<Beer> getAllBeers(){
-		return beerInMemoryDb;
+		return BEER_TABLE;
 	}
 
 	/**
@@ -55,12 +55,12 @@ public class BeerInMemoryRepository implements BeerRepository{
 		
 		Beer beerToDelete = getById(id);
 		
-		beerInMemoryDb.remove(beerToDelete);
+		BEER_TABLE.remove(beerToDelete);
 	}
 	
 	public Beer getById(Integer id) {
 		
-		Beer c = beerInMemoryDb.stream().filter(b -> {
+		Beer c = BEER_TABLE.stream().filter(b -> {
 			return b.getId().equals(id);
 		}).findFirst().get();
 		
