@@ -16,14 +16,14 @@ import ch.hearc.beershopfull.catalog.repository.BeerRepository;
 @Repository
 public class BeerInMemoryRepository implements BeerRepository{
 
-	private static List<Beer> beerInMemoryDb = new ArrayList<>();
+	private static List<Beer> BEER_TABLE = new ArrayList<>();
 	
 	/**
 	 * Sauvegarde d'une bière
 	 * @param beer
 	 */
 	public void saveBeer(Beer beer) {
-		beerInMemoryDb.add(beer);
+		BEER_TABLE.add(beer);
 	}
 	
 	/**
@@ -31,7 +31,7 @@ public class BeerInMemoryRepository implements BeerRepository{
 	 * @return
 	 */
 	public List<Beer> getAllBeers(){
-		return beerInMemoryDb;
+		return BEER_TABLE;
 	}
 	
 	
