@@ -13,6 +13,8 @@
 				      <th scope="col">Stock</th>
 				      <th scope="col" th:if="${isAdmin}"/>
 				      <th scope="col" th:if="${isAdmin}"/>
+				      <th scope="col" th:if="${isPublic}">Evaluer</th>
+				      <th scope="col">Popularité</th>
 				    </tr>
 				 </thead>
 				 <tbody>
@@ -34,6 +36,21 @@
 				    			<button type="submit" class="btn btn-warning">Modifier</button>
 				    		</form>
 				    	</td>
+				    	<td th:if="${isPublic}">
+				    		<form action="#" th:action="@{/evaluate}" method="post">
+							    <select name="note" style="width: 40px"> class="form-control" id="eval">
+							      <option>1</option>
+							      <option>2</option>
+							      <option>3</option>
+							      <option>4</option>
+							      <option>5</option>
+							    </select>
+							    <input type="hidden" th:value="${beer.id}" name="beerId" />
+							    <button type="submit" class="btn btn-warning">Voter</button>
+				    		</form>
+				    	</td>
+				    	<td th:text="${beer.popularite}" />
+				    	
 				    	
 					</tr>
 				</tbody>

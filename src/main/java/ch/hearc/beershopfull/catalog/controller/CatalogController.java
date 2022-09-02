@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.hearc.beershopfull.catalog.model.Beer;
 import ch.hearc.beershopfull.catalog.service.CatalogService;
@@ -25,7 +26,7 @@ import ch.hearc.beershopfull.catalog.service.CatalogService;
 public class CatalogController {
 
 	@Autowired
-	CatalogService catalogeService;
+	CatalogService catalogService;
 	
 	
 	/**
@@ -35,8 +36,23 @@ public class CatalogController {
 	 */
 	@GetMapping(value = {"/","/accueil"})
 	public String showAccueilPage(Model model) {
-	    model.addAttribute("beers", catalogeService.getAllBeersFromCatalog());   
+	    model.addAttribute("beers", catalogService.getAllBeersFromCatalog());   
+	    model.addAttribute("isPublic",Boolean.TRUE);
 		return "accueil";
+	}
+	
+	/**
+	 * Sauvegarde de l'évaluation d'une bière
+	 * 
+	 * @param note
+	 * @param beerId
+	 * @return la page courante
+	 */
+	@PostMapping(value = {"/evaluate"})
+	public String evaluateBeer(Model model,@RequestParam Integer note,@RequestParam Integer beerId) {
+	    catalogService.saveEvaluation(beerId, note);
+		model.addAttribute("beers", catalogService.getAllBeersFromCatalog());   
+		return "redirect:/";
 	}
 	
 	

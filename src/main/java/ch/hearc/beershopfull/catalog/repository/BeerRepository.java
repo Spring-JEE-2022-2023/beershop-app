@@ -39,5 +39,7 @@ public interface BeerRepository {
 	
 	public Beer getById(Integer id);
 	
+	
+	
 
 }

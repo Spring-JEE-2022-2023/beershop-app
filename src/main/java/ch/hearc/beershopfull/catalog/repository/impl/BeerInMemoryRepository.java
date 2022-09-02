@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import ch.hearc.beershopfull.catalog.model.Beer;
+import ch.hearc.beershopfull.catalog.model.EvaluationBeer;
 import ch.hearc.beershopfull.catalog.repository.BeerRepository;
 
 /**
@@ -17,7 +18,9 @@ import ch.hearc.beershopfull.catalog.repository.BeerRepository;
 public class BeerInMemoryRepository implements BeerRepository{
 
 	private static List<Beer> BEER_TABLE = new ArrayList<>();
+	
 	private Integer pk = 0;
+	
 	
 	/**
 	 * Sauvegarde d'une bière
@@ -66,6 +69,7 @@ public class BeerInMemoryRepository implements BeerRepository{
 		
 		return c;
 	}
+
 	
 	
 }

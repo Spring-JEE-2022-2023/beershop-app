@@ -1,6 +1,10 @@
 package ch.hearc.beershopfull.catalog.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -13,6 +17,31 @@ public class Beer {
 
 	private String name;
 	private BigDecimal price;
+	
+	private List<EvaluationBeer> evaluations = new ArrayList<EvaluationBeer>();
+	
+	private static final DecimalFormat df = new DecimalFormat("0.00");
+	
+	public void setEvaluations(List<EvaluationBeer> evaluations){
+		this.evaluations = evaluations;
+	}
+	
+	public String getPopularite() {
+		df.setRoundingMode(RoundingMode.UP);
+		int nbEval = evaluations.size();
+		
+		if(nbEval == 0) {
+			return "0";
+		}
+		
+		int somme = evaluations.stream()
+				.map(evaluation -> evaluation.getNote())
+				.reduce(0, (a, b) -> a + b); 
+		
+		return df.format((double)somme/(double)nbEval*20.0d);
+		
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
