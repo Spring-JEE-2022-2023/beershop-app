@@ -1,70 +1,43 @@
 package ch.hearc.beershopfull.catalog.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
 import ch.hearc.beershopfull.catalog.model.Beer;
-
 /**
- * Classe gérant l'accès aux données
- * @author Seb
+ * Interface de gestion des données des bières
+ * @author seb
  *
  */
-@Repository
-public class BeerRepository {
+public interface BeerRepository {
 
-	private static List<Beer> beerInMemoryDb = new ArrayList<>();
-	private Integer pk = 0;
+
 	
 	/**
 	 * Sauvegarde d'une bière
 	 * @param beer
 	 */
-	public void saveBeer(Beer beer) {
-		beer.setId(pk);
-		beerInMemoryDb.add(beer);
-		pk++;
-	}
+	public void saveBeer(Beer beer);
 	
 	/**
 	 * Update d'une bière
 	 * @param beer
 	 */
-	public void updateBeer(Beer beer) {
-		beerInMemoryDb.remove(beer);
-		beerInMemoryDb.add(beer);
-		
-	}
+	public void updateBeer(Beer beer);
+
 	
 	/**
 	 * Retourne toutes les bières
 	 * @return
 	 */
-	public List<Beer> getAllBeers(){
-		return beerInMemoryDb;
-	}
+	public List<Beer> getAllBeers();
 
 	/**
 	 * Suppression d'une bière via son id
 	 * @param id
 	 */
-	public void deleteBeer(Integer id) {
-		
-		Beer beerToDelete = getById(id);
-		
-		beerInMemoryDb.remove(beerToDelete);
-	}
+	public void deleteBeer(Integer id);
 	
-	public Beer getById(Integer id) {
-		
-		Beer c = beerInMemoryDb.stream().filter(b -> {
-			return b.getId().equals(id);
-		}).findFirst().get();
-		
-		return c;
-	}
+	public Beer getById(Integer id);
 	
-	
+
 }

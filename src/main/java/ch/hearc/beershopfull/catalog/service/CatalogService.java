@@ -2,55 +2,26 @@ package ch.hearc.beershopfull.catalog.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import ch.hearc.beershopfull.catalog.model.Beer;
-import ch.hearc.beershopfull.catalog.repository.BeerRepository;
 
-import org.springframework.stereotype.Service;
+public interface CatalogService {
 
-/**
- * Service de gestion du catalogue de bières
- * @author Seb
- *
- */
-@Service
-public class CatalogService {
-	
-	@Autowired
-	BeerRepository beerRepository; //repository d'accès aux données
-	
 	/**
 	 * Sauvegarde une nouvelle bière
 	 * @param beer la bière
 	 */
-	public void addBeerToCatalog(Beer beer) {
-		beerRepository.saveBeer(beer);
-	}
+	public void addBeerToCatalog(Beer beer);
 	
 	/**
 	 * Retourne toute les bières
 	 * @return la liste des bières
 	 */
-	public List<Beer> getAllBeersFromCatalog(){
-		return beerRepository.getAllBeers();
-	}
+	public List<Beer> getAllBeersFromCatalog();
 
-	public void deleteBeer(Integer id) {
-		beerRepository.deleteBeer(id);
-		
-	}
+	public void deleteBeer(Integer id);
 	
-	public Beer updateBeer(Beer beer) {
-		beerRepository.updateBeer(beer);
-		return beer;
-		
-	}
+	public Beer updateBeer(Beer beer);
 	
-	public Beer getBeerById(Integer id) {
-		return beerRepository.getById(id);
-		
-	}
+	public Beer getBeerById(Integer id);
 	
 }
