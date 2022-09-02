@@ -1,6 +1,7 @@
 package ch.hearc.beershopfull.catalog.model;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * Model of a beer
@@ -10,10 +11,33 @@ import java.math.BigDecimal;
 public class Beer {
 
 
-	public String name;
-	public BigDecimal price;
-	private Integer stock;
+	private String name;
+	private BigDecimal price;
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
 
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Beer other = (Beer) obj;
+		return Objects.equals(id, other.id);
+	}
+
+	private Integer stock;
+	private Integer id;
+
+
+	public Integer getId() {
+		return id;
+	}
 
 	
 	public Integer getStock() {
@@ -40,6 +64,10 @@ public class Beer {
 	public void setPrice(BigDecimal price) {
 
 		this.price = price;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	

@@ -16,13 +16,26 @@ import ch.hearc.beershopfull.catalog.model.Beer;
 public class BeerRepository {
 
 	private static List<Beer> beerInMemoryDb = new ArrayList<>();
+	private Integer pk = 0;
 	
 	/**
 	 * Sauvegarde d'une bière
 	 * @param beer
 	 */
 	public void saveBeer(Beer beer) {
+		beer.setId(pk);
 		beerInMemoryDb.add(beer);
+		pk++;
+	}
+	
+	/**
+	 * Update d'une bière
+	 * @param beer
+	 */
+	public void updateBeer(Beer beer) {
+		beerInMemoryDb.remove(beer);
+		beerInMemoryDb.add(beer);
+		
 	}
 	
 	/**
@@ -31,6 +44,26 @@ public class BeerRepository {
 	 */
 	public List<Beer> getAllBeers(){
 		return beerInMemoryDb;
+	}
+
+	/**
+	 * Suppression d'une bière via son id
+	 * @param id
+	 */
+	public void deleteBeer(Integer id) {
+		
+		Beer beerToDelete = getById(id);
+		
+		beerInMemoryDb.remove(beerToDelete);
+	}
+	
+	public Beer getById(Integer id) {
+		
+		Beer c = beerInMemoryDb.stream().filter(b -> {
+			return b.getId().equals(id);
+		}).findFirst().get();
+		
+		return c;
 	}
 	
 	

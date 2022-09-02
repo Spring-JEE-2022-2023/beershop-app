@@ -36,4 +36,21 @@ public class CatalogService {
 	public List<Beer> getAllBeersFromCatalog(){
 		return beerRepository.getAllBeers();
 	}
+
+	public void deleteBeer(Integer id) {
+		beerRepository.deleteBeer(id);
+		
+	}
+	
+	public Beer updateBeer(Beer beer) {
+		beerRepository.updateBeer(beer);
+		return beer;
+		
+	}
+	
+	public Beer getBeerById(Integer id) {
+		return beerRepository.getById(id);
+		
+	}
+	
 }

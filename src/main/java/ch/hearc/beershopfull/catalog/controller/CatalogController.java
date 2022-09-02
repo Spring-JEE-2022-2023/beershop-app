@@ -28,31 +28,6 @@ public class CatalogController {
 	@Autowired
 	CatalogService catalogeService;
 	
-	/**
-	 * Point d'entrée permettant de poster une nouvelle bière
-	 * @param beer la bière à créér
-	 * @param errors un objet contenant les erreurs éventuelles
-	 * @param model le modèle de la page
-	 * @return on redirige sur la page d'accueil. On redirige sur l'url, pas sur le template
-	 */
-	@PostMapping(value = "/save-beer")
-	//notation alternative:
-	//@RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
-    public String saveBeer(@ModelAttribute Beer beer, BindingResult errors, Model model) {
-	   catalogeService.addBeerToCatalog(beer);
-       return "redirect:/accueil"; //
-    }
-	
-	/**
-	 * Retourn le template de création des bières
-	 * @param model le modèle de la page
-	 * @return le nom du template
-	 */
-	@GetMapping(value = "/new-beer")
-	public String showNewBeerForm(Model model) {
-	    model.addAttribute("beer", new Beer());   
-		return "new-beer";
-	}
 	
 	/**
 	 * Retourne le template de création de la page d'accueil
