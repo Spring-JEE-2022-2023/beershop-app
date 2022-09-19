@@ -1,41 +1,5 @@
 
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@sebChevre
-spring-projects /
-spring-framework
-Public
 
-Code
-Issues 1.2k
-Pull requests 202
-Actions
-Projects
-Wiki
-Security
-
-    Insights
-
-spring-framework/.gitignore
-@sbrannen
-sbrannen Clean up .gitignore file
-Latest commit 98dd5db on 27 Jun
-History
-10 contributors
-@cbeams
-@dsyer
-@sbrannen
-@philwebb
-@bclozel
-@rwinch
-@sdeleuze
-@rstoyanchev
-@ShaoqiangLu
-@jhoeller
-53 lines (47 sloc) 703 Bytes
 # Miscellaneous
 *.java.hsp
 *.sonarj
@@ -67,7 +31,6 @@ buildSrc/build
 spring-test/test-output/
 
 # Maven artifacts
-pom.xml
 target/
 
 # Eclipse artifacts, including WTP generated manifests
@@ -89,20 +52,3 @@ atlassian-ide-plugin.xml
 
 # VS Code
 .vscode/
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-
-    Terms
-    Privacy
-    Security
-    Status
-    Docs
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
-You have unread notifications
