@@ -13,21 +13,13 @@ import ch.hearc.beershopfull.catalog.repository.BeerRepository;
  * @author Seb
  *
  */
-@Repository
-public class BeerInMemoryRepository implements BeerRepository{
+//@Repository
+public class BeerInMemoryRepository {
 
 	private static List<Beer> BEER_TABLE = new ArrayList<>();
 	private Integer pk = 0;
 	
-	/**
-	 * Sauvegarde d'une bière
-	 * @param beer
-	 */
-	public void saveBeer(Beer beer) {
-		beer.setId(pk);
-		BEER_TABLE.add(beer);
-		pk++;
-	}
+	
 	
 	/**
 	 * Update d'une bière

@@ -56,7 +56,7 @@ public class AdminController {
 	
 	@PostMapping(value = "/delete-beer")
 	private String deleteStudent(@RequestParam Integer id){
-	    catalogueService.deleteBeer(id);
+	    catalogueService.deleteBeer(new Long(id));
 	    return "redirect:/admin/";
 	}
 	

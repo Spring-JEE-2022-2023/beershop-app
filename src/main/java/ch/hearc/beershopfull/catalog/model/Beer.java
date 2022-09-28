@@ -3,16 +3,26 @@ package ch.hearc.beershopfull.catalog.model;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Model of a beer
  * @author Seb
  *
  */
+@Entity
 public class Beer {
 
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	private Integer stock;
 	private String name;
 	private BigDecimal price;
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -31,11 +41,10 @@ public class Beer {
 		return Objects.equals(id, other.id);
 	}
 
-	private Integer stock;
-	private Integer id;
+	
 
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -66,7 +75,7 @@ public class Beer {
 		this.price = price;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

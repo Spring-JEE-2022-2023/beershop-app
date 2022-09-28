@@ -4,6 +4,7 @@ import java.util.List;
 
 import ch.hearc.beershopfull.catalog.model.Beer;
 
+
 public interface CatalogService {
 
 	/**
@@ -18,7 +19,7 @@ public interface CatalogService {
 	 */
 	public List<Beer> getAllBeersFromCatalog();
 
-	public void deleteBeer(Integer id);
+	public void deleteBeer(Long id);
 	
 	public Beer updateBeer(Beer beer);
 	

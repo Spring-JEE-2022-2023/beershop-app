@@ -1,5 +1,6 @@
 package ch.hearc.beershopfull.catalog.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class CatalogServiceImpl implements CatalogService{
 	 * @param beer la bière
 	 */
 	public void addBeerToCatalog(Beer beer) {
-		beerRepository.saveBeer(beer);
+		beerRepository.save(beer);
 	}
 	
 	/**
@@ -34,22 +35,25 @@ public class CatalogServiceImpl implements CatalogService{
 	 * @return la liste des bières
 	 */
 	public List<Beer> getAllBeersFromCatalog(){
-		return beerRepository.getAllBeers();
+		List<Beer> result = new ArrayList<Beer>();
+		beerRepository.findAll().forEach(result::add);
+		return result;
+		//return beerRepository.findAll();
 	}
 
-	public void deleteBeer(Integer id) {
-		beerRepository.deleteBeer(id);
+	public void deleteBeer(Long id) {
+		beerRepository.deleteById(new Long(id));
 		
 	}
 	
 	public Beer updateBeer(Beer beer) {
-		beerRepository.updateBeer(beer);
+		beerRepository.save(beer);
 		return beer;
 		
 	}
 	
 	public Beer getBeerById(Integer id) {
-		return beerRepository.getById(id);
+		return beerRepository.findById(new Long(id)).get();
 		
 	}
 }
