@@ -25,4 +25,6 @@ public interface CatalogService {
 	
 	public Beer getBeerById(Integer id);
 	
+	public void saveEvaluation(Integer beerId, Integer note);
+	
 }
