@@ -15,6 +15,10 @@ import java.util.Objects;
 public class Beer {
 
 
+	public List<EvaluationBeer> getEvaluations() {
+		return evaluations;
+	}
+
 	private String name;
 	private BigDecimal price;
 	

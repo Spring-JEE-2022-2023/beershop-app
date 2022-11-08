@@ -17,6 +17,7 @@ public interface CatalogService {
 	 * @return la liste des bières
 	 */
 	public List<Beer> getAllBeersFromCatalog();
+	
 
 	public void deleteBeer(Integer id);
 	

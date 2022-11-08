@@ -1,6 +1,7 @@
 package ch.hearc.beershopfull.catalog.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.hearc.beershopfull.catalog.model.Beer;
+import ch.hearc.beershopfull.catalog.model.EvaluationBeer;
 import ch.hearc.beershopfull.catalog.service.CatalogService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,8 +49,8 @@ public class AdminController {
 		if(type.equals("new")) {
 			catalogueService.addBeerToCatalog(beer);
 		}else {
-			catalogueService.deleteBeer(beer.getId());
-			catalogueService.addBeerToCatalog(beer);
+			catalogueService.updateBeer(beer);
+			
 		}
 		
        return "redirect:/admin/"; //
