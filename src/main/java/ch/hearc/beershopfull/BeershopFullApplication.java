@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BeershopFullApplication {
 
 	public static void main(String[] args) {
+		System.out.println("yep");
 		SpringApplication.run(BeershopFullApplication.class, args);
 	}
 

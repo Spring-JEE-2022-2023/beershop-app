@@ -24,9 +24,9 @@ public class BeerInMemoryRepository implements BeerRepository{
 	 * @param beer
 	 */
 	public void saveBeer(Beer beer) {
-		beer.setId(pk);
+		//beer.setId(pk);
 		BEER_TABLE.add(beer);
-		pk++;
+		//pk++;
 	}
 	
 	/**
