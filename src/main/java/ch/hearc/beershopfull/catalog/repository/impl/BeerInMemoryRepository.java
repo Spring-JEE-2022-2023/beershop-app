@@ -2,6 +2,7 @@ package ch.hearc.beershopfull.catalog.repository.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -25,10 +26,23 @@ public class BeerInMemoryRepository implements BeerRepository{
 	 */
 	public void saveBeer(Beer beer) {
 		//beer.setId(pk);
+		checkIfIdDoesntExist(beer.getId());
 		BEER_TABLE.add(beer);
 		//pk++;
 	}
 	
+	private void checkIfIdDoesntExist(Integer id) {
+		
+		if(BEER_TABLE.stream().filter(beer -> {
+			return beer.getId().equals(id);
+		}).findFirst().isPresent()) {
+			throw new RuntimeException("Id " + id + " already exist");
+		}
+		
+		
+		
+	}
+
 	/**
 	 * Update d'une bière
 	 * @param beer

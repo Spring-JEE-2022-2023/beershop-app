@@ -1,6 +1,8 @@
 package ch.hearc.beershopfull.repository.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +33,36 @@ public class BeerShopInMemoryTest {
 		
 		assertEquals(beers.size(), 1, "One beer in the list");
 		
+	}
+	
+	
+	@Test
+	public void testThatTwoBeerWith2SameIdThowException () {
+		
+		clearDB ();
+		
+		Beer beer1 = new Beer();
+		beer1.setId(1);
+		beer1.setName("beer 1");
+		repository.saveBeer(beer1);
+		
+		Beer beer2 = new Beer();
+		beer2.setId(1);
+		beer2.setName("beer 2");
+		
+		
+		Exception exception = assertThrows(RuntimeException.class, () -> {
+			repository.saveBeer(beer2);
+	    });
+
+	    String expectedMessage = "Id 1 already exist";
+	    String actualMessage = exception.getMessage();
+
+	    assertTrue(actualMessage.contains(expectedMessage));
+	    
+	    List<Beer> beers = repository.getAllBeers();
+		
+		assertEquals(beers.size(), 1, "Still one beer in the list");
 	}
 	
 	@Test
