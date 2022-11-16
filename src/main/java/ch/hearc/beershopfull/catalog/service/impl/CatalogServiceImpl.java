@@ -26,7 +26,12 @@ public class CatalogServiceImpl implements CatalogService{
 	 * @param beer la bière
 	 */
 	public void addBeerToCatalog(Beer beer) {
-		beerRepository.saveBeer(beer);
+		try {
+			beerRepository.saveBeer(beer);
+		} catch (Exception e) {
+			throw e;
+		}
+		
 	}
 	
 	/**

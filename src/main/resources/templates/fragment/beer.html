@@ -69,5 +69,10 @@
 	    <input type="hidden" name="type" th:if="${isNew}" th:value="new" />
 		<input type="hidden" name="type" th:if="${isEdit}" th:value="edit" />
 	    <button type="submit" class="btn btn-primary">Enregistrer</button>
+	    <div th:if="${#fields.hasAnyErrors()}">
+		    <ul>
+		        <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+		    </ul>
+		</div>
 	</form>
 </div>

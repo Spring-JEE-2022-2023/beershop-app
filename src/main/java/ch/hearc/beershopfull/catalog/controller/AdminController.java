@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,7 +46,20 @@ public class AdminController {
     public String saveBeer(@ModelAttribute Beer beer, BindingResult errors, Model model,@RequestParam String type) {
 		
 		if(type.equals("new")) {
-			catalogueService.addBeerToCatalog(beer);
+			try {
+				catalogueService.addBeerToCatalog(beer);
+			} catch (RuntimeException e) {
+				errors.addError(new ObjectError("save", e.getMessage()));
+				
+				model.addAttribute("beer", beer);   
+			    model.addAttribute("showList",Boolean.FALSE);
+			    model.addAttribute("showNew",Boolean.TRUE);
+			    
+			    model.addAttribute("isNew",Boolean.TRUE);
+			    model.addAttribute("isEdit",Boolean.FALSE);
+				return "admin/accueil";
+			}
+			
 		}else {
 			catalogueService.deleteBeer(beer.getId());
 			catalogueService.addBeerToCatalog(beer);
