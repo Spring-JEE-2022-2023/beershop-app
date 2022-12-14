@@ -18,7 +18,7 @@ public class EvaluationBeer {
 	private Integer note;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	public Long getId() {

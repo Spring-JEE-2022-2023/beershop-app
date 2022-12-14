@@ -23,8 +23,9 @@ import javax.persistence.OneToMany;
 public class Beer {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
 	private Integer stock;
 	private String name;
 	private BigDecimal price;

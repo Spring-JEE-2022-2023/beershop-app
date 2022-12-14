@@ -14,4 +14,6 @@ public interface BeerRepository extends CrudRepository<Beer, Long>{
 
 
 	Beer findById(long id);
+	
+	Beer findByName(String name);
 }
