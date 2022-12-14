@@ -1,38 +1,4 @@
-<<<<<<< HEAD
 HELP.md
-=======
-# Miscellaneous
-*.java.hsp
-*.sonarj
-*.sw*
-.DS_Store
-build.sh
-integration-repo
-ivy-cache
-argfile*
-activemq-data/
-classes/
-
-# Log files
-jxl.log
-jmx.log
-derby.log
-
-# Gradle artifacts
-.gradle
-.gradletasknamecache
-/build
-buildSrc/build
-/spring-*/build
-/spring-core/graalvm/build
-/spring-core/kotlin-coroutines/build
-/framework-bom/build
-/integration-tests/build
-/src/asciidoc/build
-spring-test/test-output/
-
-# Maven artifacts
->>>>>>> ef37a66c0bcbdba3f8f7cd1cffc0a9ecb8aa6856
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

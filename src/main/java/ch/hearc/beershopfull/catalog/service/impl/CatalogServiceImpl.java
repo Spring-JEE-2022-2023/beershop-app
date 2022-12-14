@@ -60,8 +60,6 @@ public class CatalogServiceImpl implements CatalogService{
 	public void deleteBeer(Integer id) {
 		Beer bDeleteBeer = beerRepository.findById(new Long(id)).get();
 		beerRepository.delete(bDeleteBeer);
-		//evaluationRepository.de(id);
-
 		
 	}
 	
