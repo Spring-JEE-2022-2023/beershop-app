@@ -51,14 +51,14 @@ public class CatalogServiceImpl implements CatalogService{
 	}
 
 	public void deleteBeer(Long id) {
-		beerRepository.deleteById(new Long(id));
+		beerRepository.deleteById(Long.valueOf(id));
 
 		
 		
 	}
 
 	public void deleteBeer(Integer id) {
-		Beer bDeleteBeer = beerRepository.findById(new Long(id)).get();
+		Beer bDeleteBeer = beerRepository.findById(Long.valueOf(id)).get();
 		beerRepository.delete(bDeleteBeer);
 		
 	}
@@ -70,13 +70,14 @@ public class CatalogServiceImpl implements CatalogService{
 	}
 	
 	public Beer getBeerById(Integer id) {
-		return beerRepository.findById(new Long(id)).get();
+		return beerRepository.findById(Long.valueOf(id)).get();
 		
 	}
 
 	
 	public void saveEvaluation(Integer beerId, Integer note) {
-		Beer beer = beerRepository.findById(beerId);
+		//FIXME tester l'existence avant....
+		Beer beer = beerRepository.findById(Long.valueOf(note)).get();
 		
 		EvaluationBeer evaluationBeer =  new EvaluationBeer(note);
 		evaluationBeer.setBeer(beer);
