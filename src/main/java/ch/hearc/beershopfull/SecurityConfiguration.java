@@ -27,6 +27,11 @@ public class SecurityConfiguration {
 			.anyRequest().authenticated()
 			.and().formLogin().permitAll();
 		
+		http.logout()
+			.logoutSuccessUrl("/admin");
+		
+			
+		
 		
 		return http.build();
 		/**
