@@ -13,13 +13,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
+
 @EnableWebSecurity
 @Profile(value="secure")
 public class SecurityConfiguration {
     
 	
 	@Bean
+	@Profile(value = "secure-admin")
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
 		
@@ -32,28 +33,9 @@ public class SecurityConfiguration {
 		http.logout()
 			.logoutSuccessUrl("/admin");
 		
-			
-		
 		
 		return http.build();
-		/**
-		http
-			.authorizeHttpRequests((requests) -> {
-				try {
-					requests
-						.antMatchers("/", "/accueil").permitAll()
-						.anyRequest().authenticated()
-						.and().formLogin().permitAll();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-				
-			);
-			
-		return http.build();
-		*/
+		
 	}
 		
 

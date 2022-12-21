@@ -13,6 +13,12 @@
 
 	<div class="container">
 		
+		<!--  **************** logout ****************** -->
+<div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()"> 
+            Utilisateur: <span sec:authentication="name">[]</span>
+            Roles: <span sec:authentication="principal.authorities"></span> 
+</div>
+
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		  <a class="navbar-brand" href="#">Beershop Admin</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +31,9 @@
 		        <a class="nav-link" href="/admin/new-beer">Nouvelle bières <span class="sr-only">(current)</span></a>
 		      </li>
 		      <li class="nav-item active">
-		        <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+		         <form action="#" th:action="@{/logout}" method="post"> 
+            		<input type="submit" value="Logout" />
+        		</form>
 		      </li>
 		    </ul>
 		    
