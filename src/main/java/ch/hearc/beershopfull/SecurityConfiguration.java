@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import ch.hearc.beershopfull.catalog.service.impl.UserDetailServiceImpl;
+
 
 @EnableWebSecurity
 @Profile(value="secure")
@@ -42,6 +44,7 @@ public class SecurityConfiguration {
 	@Bean
 	public UserDetailsService userDetailsService() {
 		
+		/**
 		UserDetails user =
 			 User.withDefaultPasswordEncoder()
 				.username("user")
@@ -49,7 +52,16 @@ public class SecurityConfiguration {
 				.roles("USER")
 				.build();
 
-		return new InMemoryUserDetailsManager(user);
+		UserDetails user2 =
+				 User.withDefaultPasswordEncoder()
+					.username("user2")
+					.password("password2")
+					.roles("USER")
+					.build();
+
+		return new InMemoryUserDetailsManager(user,user2);*/
+		
+		return new UserDetailServiceImpl();
 	}
 }
 
